@@ -33,12 +33,12 @@ nav .links{display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-size:15p
 nav .links a{text-decoration:none}
 nav .links a.btn{padding:12px 22px}
 /* hero */
-.hero{position:relative;border-radius:28px;overflow:hidden;min-height:560px;background:var(--ink);display:flex;align-items:flex-end}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero .card{position:relative;margin:32px;max-width:560px;background:var(--ground);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px}
-.hero h1{font-size:46px;line-height:1.05}
-.hero p{margin:0;font-size:17px;color:#3B484C}
-.price{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:6px}
+.hero{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:8px 0 28px}
+.hero-text{flex:1 1 480px;max-width:720px;display:flex;flex-direction:column;gap:12px}
+.hero h1{font-size:50px;line-height:1.05}
+.hero p{margin:0;font-size:18px;color:#3B484C}
+.hero-photo{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:28px;background:var(--ink)}
+.price{display:flex;flex-wrap:wrap;align-items:center;gap:20px}
 .price strong{font-family:'Fraunces',serif;font-size:34px;font-weight:600}
 .price small{font-size:15px;font-weight:500;color:var(--muted)}
 /* stats */
@@ -54,12 +54,13 @@ nav .links a.btn{padding:12px 22px}
 .tab[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 .stage{position:relative;border-radius:24px;overflow:hidden;background:var(--ink);aspect-ratio:16/9;min-height:260px}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);will-change:transform}
-.caption{position:absolute;left:20px;bottom:20px;max-width:440px;background:var(--ground);border-radius:16px;padding:14px 18px;display:flex;flex-direction:column;gap:4px}
+.panel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:16px}
+.caption{flex:1 1 320px;display:flex;flex-direction:column;gap:2px}
 .caption .step{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dark)}
 .caption .name{font-family:'Fraunces',serif;font-weight:600;font-size:22px}
 .caption .note{font-size:14px;line-height:1.4;color:#3B484C}
-.controls{position:absolute;right:20px;bottom:20px;display:flex;gap:8px}
-.round{width:48px;height:48px;border-radius:50%;border:0;background:var(--ground);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.controls{display:flex;gap:8px}
+.round{width:48px;height:48px;border-radius:50%;border:0;background:var(--ink);color:var(--ground);display:flex;align-items:center;justify-content:center}
 .play{height:48px;padding:0 20px;border-radius:999px;border:0;background:var(--accent);color:#fff;font-weight:600;font-size:15px}
 .bar{height:6px;border-radius:999px;background:#DDD3C1;margin-top:16px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .4s}
@@ -97,9 +98,8 @@ nav .links a.btn{padding:12px 22px}
 footer{padding:0 0 40px;font-size:13px;color:var(--muted)}
 a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 @media (max-width:700px){
-  h2{font-size:32px}.hero h1{font-size:34px}.hero{min-height:480px}.hero .card{margin:16px;padding:24px}
+  h2{font-size:32px}.hero h1{font-size:34px}.hero-photo{aspect-ratio:4/3;border-radius:20px}
   section{padding-top:64px}.contact{padding:28px}.loc .map{padding:28px}
-  .caption{left:12px;right:12px;bottom:72px;max-width:none}.controls{right:12px;bottom:12px}
   .stage{aspect-ratio:4/3}.play{padding:0 14px;font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -118,17 +118,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   </nav>
 
   <header class="hero">
-    <img src="img/2478.jpg" alt="Fachada de la casa con barda curva y portón">
-    <div class="card">
+    <div class="hero-text">
       <div class="eyebrow">En venta · El Arco INFONAVIT, Cabo San Lucas</div>
       <h1>Casa de 4 recámaras con terraza cubierta y bodega</h1>
       <p>125 m² de construcción en 184 m² de terreno. Recorre cada espacio desde donde estés.</p>
-      <div class="price">
-        <strong>$2,850,000 MXN <small>precio a tratar</small></strong>
-        <a class="btn btn-accent" href="#recorrido">Iniciar recorrido</a>
-      </div>
+    </div>
+    <div class="price">
+      <strong>$2,850,000 MXN <small>precio a tratar</small></strong>
+      <a class="btn btn-accent" href="#recorrido">Iniciar recorrido</a>
     </div>
   </header>
+  <img class="hero-photo" src="img/2478.jpg" alt="Fachada de la casa con barda curva y portón">
 
   <div class="stats">
     <div class="stat"><b>4</b><span>Recámaras</span></div>
@@ -149,6 +149,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
     <div class="tabs" id="tabs" role="group" aria-label="Áreas de la casa"></div>
     <div class="stage" id="stage">
       <img id="photo" src="img/2478.jpg" alt="">
+    </div>
+    <div class="panel">
       <div class="caption" aria-live="polite">
         <div class="step" id="step"></div>
         <div class="name" id="name"></div>
